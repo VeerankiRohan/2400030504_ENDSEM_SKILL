@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .navbar{
+            background-color: #000000;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            padding: 0px;
+            margin: 0px;
+        }
+        .navbar li{
+            color: #7fff00;
+            list-style-type: none;
+            float: left;
+            padding: 20px;
+            cursor: pointer;
+        }
+        .navbar ul{
+            display: flex;
+            padding: 0px;
+        }
+        .navbar li:hover{
+            background-color: #a52a2a;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul> 
+        <li>Home</li>
+        <li>Contact</li>
+        <li>Address</li>
+        <li>ID</li>
+        </ul>
+        <ul>
+            <li onclick="showform('signinform')">SIGN IN</li>
+            <li onclick="showform('signupform')">SIGN UP</li>
+
+        </ul>
+    </div>
+    <!---LOGIN FORM--->
+    <div id="signinform" class="form-container">
+        <h2> sign in form </h2>
+        <input type="text" placeholder="Enter User name">
+        <input type="password" placeholder="Enter password">
+        <input type="email" placeholder="Enter email">
+        <button> Sign in</button>
+    </div>
+    <div  id="signform" class="form-container">
+        <h2> sign up form </h2>
+         
+        <input type="text" placeholder="Enter User name">
+        <input type="password" placeholder="Enter password">
+        <input type="email" placeholder="Enter email">
+        <button> Sign up</button>
+
+    </div>
+    <script>
+          function showform(formId){
+            //hide all the opened forms
+            document.querySelectorAll('.form-container').forEach(
+                form => { form.style.display = 'none' }
+            );
+            //open specified form
+            document.getElementById(formId).style.display = 'block';
+        }
+    </script>    
+</body>
+</html>

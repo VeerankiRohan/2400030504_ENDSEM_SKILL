@@ -1,0 +1,72 @@
+
+<html>
+<head>
+<title>Birthday Reminder</title>
+<style>
+body {
+  font-family: Arial;
+  padding: 20px;
+}
+       input, button {
+      padding: 8px;
+     margin: 5px 0;
+}
+  div {
+  margin: 5px 0;      
+  padding: 8px;
+  background: #f2f2;
+}
+</style>
+</head>
+<body>
+
+<h2>Student Birthday Reminder</h2>
+<input id="name" placeholder="Student Name">
+<input id="dob" type="date">
+<button onclick="addStudent()">Add Student</button>
+<h3>Students</h3>
+<div id="list"></div>
+<h3>Today's Birthdays</h3>
+<div id="today"></div>
+
+<script>
+let students = [];
+
+function addStudent() {
+  let name = document.getElementById("name").value;
+  let dob = document.getElementById("dob").value;
+  if(name && dob){
+    students.push({name:name, dob:dob});
+    showStudents();
+    checkToday();
+  }
+}
+
+function showStudents() {
+  let list = document.getElementById("list");
+  list.innerHTML = "";
+  students.forEach(s => {
+    let d = document.createElement("div");
+    d.innerText = s.name + " - " + s.dob;
+    list.appendChild(d);
+  });
+}
+
+function checkToday() {
+  let today = new Date();
+  let t = document.getElementById("today");
+  t.innerHTML = "";
+  students.forEach(s => {
+    let d = new Date(s.dob);
+    if(d.getDate() === today.getDate() && d.getMonth() === today.getMonth()) {
+      let x = document.createElement("div");
+      x.innerText = s.name + " has birthday today!";
+      t.appendChild(x);
+    }
+  });
+
+}
+</script>
+
+</body>
+</html>
